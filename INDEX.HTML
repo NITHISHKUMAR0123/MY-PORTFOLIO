@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Nithishkumar — Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<style>
+:root {
+  --wood-frame:#5c3d2e;
+  --accent:#00c2ff;
+  --accent-glow:#00f2ff;
+  --wood-light:#deb887;
+  --wood-dark:#8b5a2b;
+}
+
+/* BASIC RESET */
+* {margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+html {scroll-behavior:smooth;}
+body {
+  background:linear-gradient(135deg,#f3e5ab,#fff8d2);
+  animation:gradientMove 10s ease infinite;
+  background-size:300% 300%;
+  color:#222;
+}
+@keyframes gradientMove {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+/* ===== NAVBAR ===== */
+nav {
+  position:fixed;top:0;left:0;width:100%;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(255,255,255,0.2);backdrop-filter:blur(6px);
+  padding:12px 28px;z-index:999;box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+.logo {font-weight:900;font-size:26px;color:var(--wood-frame);}
+nav ul {display:flex;list-style:none;gap:20px;}
+nav ul li a {
+  color:var(--wood-frame);font-weight:600;text-decoration:none;
+  transition:.3s;
+}
+nav ul li a:hover {color:var(--accent);text-shadow:0 0 8px var(--accent);}
+#menu-icon {display:none;font-size:28px;color:var(--wood-frame);cursor:pointer;}
+
+/* Responsive Navbar */
+@media(max-width:768px){
+  nav ul {
+    position:absolute;top:60px;left:0;width:100%;
+    flex-direction:column;align-items:center;
+    background:rgba(255,255,255,0.9);backdrop-filter:blur(6px);
+    display:none;padding:10px 0;
+  }
+  nav ul.active {display:flex;}
+  #menu-icon {display:block;}
+}
+/* 🌗 SWITCHER ICON */
+.bg-switcher {
+  cursor:pointer; font-size:20px; color:var(--wood-frame);
+  padding:6px; border-radius:6px; border:1px solid rgba(0,0,0,0.08);
+  background:rgba(255,255,255,0.06);
+  transition:all .3s;
+}
+.bg-switcher:hover { color:var(--accent); border-color:var(--accent); transform:rotate(25deg); }
+/* SECTIONS GENERAL */
+section {
+  height:auto;
+  display:flex;justify-content:center;align-items:center;
+  flex-direction:column;
+  padding:60px 20px;
+  text-align:center;
+}
+/* HOME */
+#home {
+  color:var(--wood-frame);padding-top:120px; padding-bottom:60px;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+}
+.home-card {
+  background: rgba(255,255,255,0.06);
+  padding:40px 20px; border-radius:12px; backdrop-filter: blur(6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  max-width:920px; width:100%;
+  display:flex; gap:30px; align-items:center; justify-content:center; flex-wrap:wrap;
+}
+.home-left img {
+  min-width:220px; display:flex; align-items:center; justify-content:center;
+}
+.home-left img {
+  width:220px; height:220px; object-fit:cover; border-radius:50%;
+  border:4px solid var(--accent); box-shadow:0 0 20px var(--accent);
+}
+.home-right { max-width:620px; text-align:left; }
+.home-right h1 { font-size:34px; margin-bottom:6px; color:var(--wood-frame); }
+.home-right p { margin:6px 0; font-size:17px; color:#333; }
+.resume-btn {
+  display:inline-block; margin-top:14px; padding:10px 16px; background:var(--accent); color:#fff; border-radius:8px; font-weight:700;
+}
+.social-icons {
+  margin-top:12px; display:flex; gap:14px; align-items:center;
+}
+.social-icons a {
+  font-size:20px; color:var(--wood-frame); transition:all .25s; text-shadow:0 0 6px rgba(0,0,0,0.06);
+}
+.social-icons a:hover { transform:scale(1.12); color:var(--accent); text-shadow:0 0 12px var(--accent); }
+@media (min-width: 601px) {
+  .home-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+  }
+}
+.download-btn {
+  background: #5c3d2e; color: white; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; margin-bottom: 20px; transition: .3s;
+}
+.download-btn:hover {
+  background: #3b2b1e; transform: scale(1.05);
+}
+/* Home bottom boxes (fade-in) */
+.scroll-section {margin-top:150px; width:100%; max-width:900px;}
+.box {
+  display:flex; align-items:center; justify-content:space-between;
+  background:#fff; border-radius:12px; margin:10px 0;
+  overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.15);
+  opacity:0; transform:translateY(30px);
+  transition:opacity 1s ease, transform 1s ease;
+}
+.box.visible {opacity:1; transform:translateY(0);}
+.box:nth-child(even) {flex-direction:row-reverse;}
+.box img {width:40%; object-fit:cover; filter:brightness(0.95); transition:opacity 1s;}
+.box-content {padding:20px; width:80%; text-align:left; animation:slideText 2s ease;}
+@keyframes slideText {from {opacity:0; transform:translateX(30px);} to {opacity:1; transform:translateX(0);}}
+.box:hover img {opacity:0.8;}
+h3 {
+  text-align: center; font-size:40px; justify-content:space-between;
+}
+p {
+  font-size:15px; justify-content:space-between;
+}
+.gap {margin-bottom:35px;}
+.spacing {line-height:1.7;}
+/* ABOUT */
+#about .about-card {
+  background:rgba(255,255,255,0.3);border-radius:16px;padding:20px;
+  display:flex;flex-wrap:wrap;gap:30px;align-items:center;justify-content:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);max-width:900px;
+}
+.about-card img {width:220px;height:220px;border-radius:50%;border:4px solid var(--accent);}
+.about-text {max-width:520px; text-align:left; line-height:1.7;}
+/* SKILLS */
+#skills { padding-top:110px; padding-bottom:200px; }
+.skills-wrap { position:relative; width:100%; max-width:920px; min-height:360px; display:flex; align-items:center; justify-content:center; }
+.brain { width:140px; }
+.skill-box { position:relative; width:230px; padding:18px; border-radius:12px; background:rgba(255,255,255,0.06); box-shadow:0 6px 18px rgba(0,0,0,0.08); color:#222; }
+.skills-grid { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:20px; line-height:1.7; }
+/* PROJECTS */
+#projects { padding-top:500px; padding-bottom:500px; background: linear-gradient(180deg, var(--bg-warm1), var(--bg-warm2)); }
+.rack-scroll { display:flex; overflow-x:auto; gap:26px; padding:18px; width:100%; max-width:1200px; }
+.main-rack {
+  flex:0 0 auto; background: linear-gradient(135deg, var(--wood-light), var(--wood-dark));
+  border:10px solid var(--wood-frame); border-radius:12px; padding:18px; box-shadow: inset 0 8px 18px rgba(255,255,255,0.06), 0 10px 28px rgba(0,0,0,0.12);
+}
+/* grid: 3 rows x 4 cols of fixed-ish boxes; uses responsive sizes */
+.rack-grid {
+  display:grid; gap:12px;
+  grid-template-columns: repeat(4, minmax(20px, 2in));
+  grid-auto-rows: minmax(20px, 2in);
+  justify-items:center;
+}
+.project-card {
+  width:80%; height:80%; display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(145deg,#f2efe8,#ded6c2); border-radius:10px;
+  border:3px solid rgba(0,0,0,0.12); box-shadow: 2px 6px 14px rgba(0,0,0,0.18);
+  font-weight:700; color:#3b2b1e; cursor:pointer; transition: transform .2s, box-shadow .2s;
+}
+.project-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 6px 18px 40px rgba(0,0,0,0.22); }
+.project-card {
+  position: relative; width: 100%; height: 100%; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 10px; box-shadow: 2px 6px 14px rgba(0,0,0,0.18); transition: transform 0.2s, box-shadow 0.2s;
+}
+.project-card img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.project-number {
+  position: absolute; bottom: 8px; left: 8px; padding: 4px 8px; background: rgba(0,0,0,0.6); color: #fff; font-weight: bold; border-radius: 4px; font-size: 14px;
+}
+/* Tea Table */
+.tea-table {
+  width: 260px; height: 150px; background: #d6a878; border: 8px solid #5c3d2e; border-radius: 12px; margin: auto; position: relative; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: transform .2s;
+}
+.tea-table:hover { transform: scale(1.05); }
+.tea-cup {
+  width: 48px; height: 48px; border-radius: 50%; background: #fff; border: 3px solid #4b3621; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
+.icon-row {
+  position: absolute; bottom: 18px; width: 100%; display: flex; justify-content: space-around;
+}
+.object {
+  font-size: 28px; cursor: pointer; transition: .2s;
+}
+.object:hover { transform: scale(1.25); }
+#popup {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); justify-content: center; align-items: center; backdrop-filter: blur(5px); z-index:1600;
+}
+.popup-content {
+  background: #fff8e7; padding: 20px; border-radius: 12px; width: min(650px, 90%); max-width: 720px; box-shadow: 0 10px 25px rgba(0,0,0,0.25); text-align: left;
+}
+.close-btn {
+  float: right; font-size: 20px; cursor: pointer; color: #444;
+}
+.close-btn:hover { color: red; }
+
+/* Add space above and below Project Racks and Tea Table for better layout */
+#projects {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.tea-table {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+/* ===== CERTIFICATES ===== */
+#certificate { padding-top:650px; padding-bottom:500px; }
+.cert-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(500px,1fr)); gap:9px; height:200%; width:100%; max-width:500px; }
+/* === CONTACT === */
+#contact { padding-top:200px; padding-bottom:130px; background: rgba(255,255,255,0.06); }
+.contact-wrap { display:flex; gap:28px; width:100%; max-width:900px; align-items:flex-start; justify-content:space-between; }
+.contact-form { flex:1.05; background: rgba(255,255,255,0.06); padding:22px; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.10); }
+.contact-form label { display:block; font-size:13px; margin-top:8px; color:#333; }
+.contact-form input, .contact-form textarea { width:100%; padding:12px; margin-top:8px; border-radius:8px; border:1px solid rgba(0,0,0,0.08); }
+.contact-btn { margin-top:12px; padding:12px 16px; background:var(--accent); color:#fff; border:none; border-radius:10px; cursor:pointer; font-weight:700; }
+.social-links { width:260px; display:flex; flex-direction:column; gap:12px; align-items:flex-start; }
+/* FOOTER */
+footer {
+  background:var(--wood-frame);color:#fff; padding:16px 5px; text-align:center;
+}
+footer .footer-row {
+  display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin-bottom:12px;
+}
+footer .footer-col {
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+}
+footer a {
+  color:#fff; text-decoration:none; transition:.3s;
+}
+footer a:hover { color:var(--accent); }
+/* RESPONSIVE */
+@media(max-width:600px){
+  .home-card, .about-card { flex-direction:column; text-align:center; }
+  .home-right, .about-text { text-align:center; }
+  .box img, .box-content { width:100%; }
+  .box { flex-direction:column; }
+}
+
+  /* Floating chat icon */
+  #chatIcon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #007bff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 30px;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
+
+  /* Chat window styles */
+  #chatWindow {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: none; /* Hidden initially */
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 999;
+  }
+
+  /* Chat header */
+  #chatHeader {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* Chat content area */
+  #chatContent {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+
+  /* Input area */
+  #chatInputArea {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+  }
+
+  #userInput {
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  #sendButton {
+    margin-left: 8px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #sendButton:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">Nithish</div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About Me</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certificate">Certificates</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <i class="fa-solid fa-bars" id="menu-icon"></i>
+  <div class="bg-switcher" id="bgSwitcher" title="Change Background">
+    <i class="fa-solid fa-circle-half-stroke"></i>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="home-card">
+    <div class="home-left">
+     <img id="profileImg" src="https://image2url.com/images/1765212255532-f1689963-2e10-430c-9d02-a70e9ebdcd00.jpeg" alt="Nithishkumar Photo" onerror="this.src='https://image2url.com/images/1765212255532-f1689963-2e10-430c-9d02-a70e9ebdcd00.jpeg'">
+      </div>
+ 
+    <div class="home-right">
+      <h1>I'm <span style="color:var(--accent)">Nithishkumar</span></h1>
+      <p><strong>Mechanical Engineering Student</strong></p>
+      <p>Passionate about design, automation and sustainable engineering.Aspiring Mechanical Design Engineer | SolidWorks 2D & 3D Specialist | Passionate About Automation & Mechanism Design | Mechanical Engineering Student (KGiSL)</p>
+     <button class="download-btn" onclick="window.open('resume.pdf')">⬇ Download Resume</button>
+      <div class="social-icons">
+      <a href="https://www.linkedin.com/in/nithishkumar-g-1aa940281" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://github.com/NITHISHKUMAR0123" target="_blank"><i class="fa-brands fa-github"></i></a>
+
+<!-- GrabCAD using image logo -->
+<a href="https://grabcad.com/en/verification?confirmation_token=VQKaqx2pzL-KKttoad4F" target="_blank"><img src="https://tse1.mm.bing.net/th/id/OIP.js9sKuqM_AcncUft7zz--QHaHa?pid=Api&P=0&h=180" alt="GrabCAD" style="width:22px; height:22px;"></a>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated Boxes -->
+  <div class="scroll-section">
+    <div class="box"><img src="https://tse3.mm.bing.net/th/id/OIP.FT7P4_m1ueZK4LrV4e4TeQHaHa?pid=Api&P=0&h=180"><div class="box-content"><h3 class="gap">LinkedIn</h3><p class="spacing";>&#11088;I use LinkedIn to share SolidWorks designs, certifications, learning progress, and industry-related insights.<br><a href="https://www.linkedin.com/in/nithishkumar-g-1aa940281" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a></p></div></div>
+      <div class="box"></div>
+    <div class="box"><img src="https://tse4.mm.bing.net/th/id/OIP.VUaaqyfnuYgtu36rwJhlIwHaHa?pid=Api&P=0&h=180"><div class="box-content"><h3 class="gap">GitHub</h3><p class="spacing">&#11088;I maintain my coding projects and sample programs for public reference and version control.<br> <a href="https://github.com/NITHISHKUMAR0123" target="_blank"><i class="fa-brands fa-github"></i></a></p></div></div>
+     <div class="box"></div>
+    <div class="box"><img src="https://seekvectorlogo.com/wp-content/uploads/2019/02/grabcad-vector-logo-small.png"><div class="box-content"><h3 class="gap">GrabCAD</h3><p class="spacing">&#11088;I upload and showcase my engineering and SolidWorks design models for collaboration and reference.<br><a href="https://grabcad.com/en/verification?confirmation_token=VQKaqx2pzL-KKttoad4F" target="_blank"><img src="https://tse1.mm.bing.net/th/id/OIP.js9sKuqM_AcncUft7zz--QHaHa?pid=Api&P=0&h=180" alt="GrabCAD" style="width:22px; height:22px;"></a></p></div></div>
+      <div class="box"></div>
+    <div class="box"><img src="https://tse1.mm.bing.net/th/id/OIP.5xz7n9dsQ4082K-jszugiQHaHa?pid=Api&P=0&h=180"><div class="box-content"><h3 class="gap">Resume</h3><p class="spacing"p class="spacing">&#11088;A concise overview of my skills, education, achievements, and professional experience.<br> <button class="download-btn" onclick="window.open('resume.pdf')">⬇ Download Resume</button></p></div></div>
+    <div class="box"></div>
+  <div class="box"><img src="https://tse2.mm.bing.net/th/id/OIP.iwDe_wWnQOyDin3csEFkcAHaHa?pid=Api&P=0&h=180"><div class="box-content"><h3 class="gap">Continuous Learning</h3><p class="spacing"p class="spacing">&#11088;Actively improving skills in CNC machining, 3D printing, and advanced manufacturing processes.</p></div></div>
+ </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-card">
+    <img src="https://image2url.com/images/1765212255532-f1689963-2e10-430c-9d02-a70e9ebdcd00.jpeg" alt="Profile">
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>Hello! I'm <strong>Nithishkumar</strong>,I'm a curious and creative Mechanical Engineering student passionate about designing machines that solve real-world problems. I enjoy developing innovative ideas through CAD and automation, aiming to build a strong career in design and product innovation.
+</p>
+      <p>Currently pursuing practical learning through hands-on projects and internships.</p>
+    </div>
+  </div>
+  <div class="scroll-section">
+    <div class="box"><img src="https://tse4.mm.bing.net/th/id/OIP.tmb2XscwBI0RONZW3i0c2gHaHa?pid=Api&P=0&h=180"><div class="box-content"><h3 class="gap">Educational Background</h3><p class="spacing">&#11088;Includes my academic qualifications and institution details.<br>&#11088;B.E. Mechanical Engineering<br>KGISL Institute of Technology, coimbatore<br>CGPA: 7.90/10(Up to 3rd Semester)<br>Higher Secondary Certificate (HSC)<br>Govt. Hr. Sec. School, S.Pungampalayam<br>HSC (+2): 65.33% (2022-23)</p></div></div>
+     <div class="box"></div>
+    <div class="box"><img src="https://tse3.mm.bing.net/th/id/OIP.Y1gpWV_CtPhQX7iE-ENMbwHaHa?pid=Api&P=0&h=180"><div class="box-content"><h3 class="gap">Career </h3><p class="spacing">&#11088;<b>Area of Interest -- </b>I am passionate about mechanical design and automation technologies. My primary interest is working as a Design Engineer in the automation, manufacturing, and product development industry.<br>&#11088;<b>Career Goals -- </b>To build a strong career in mechanical design and automation engineering and contribute to advanced manufacturing solutions.<br>&#11088;<b>Career Objectives -- </b>To grow as a skilled mechanical design engineer, work on innovative industrial solutions, and continuously enhance my technical expertise.</p></div></div>
+      <div class="box"></div>
+    <div class="box"><img src="https://tse4.mm.bing.net/th/id/OIP.gB4q8njU_YCKraSmo8q6HgHaHa?pid=Api&P=0&h=180"><div class="box-content"><h3 class="gap">Experience</h3><p class="spacing">&#11088;<b>Intern Experience –-</b> Gained real-world exposure to design development, manufacturing workflows, engineering drawings, and industrial operations.<br>&#11088;<b>Internships –- </b>I take part in internships to gain practical industry exposure, develop hands-on skills, and contribute to real engineering tasks.<br>01. Elmech Automachine Pvt. Ltd., Coimbatore (1 Month)</p></div></div>
+     <div class="box"></div>
+    <div class="box"><img src="https://tse1.mm.bing.net/th/id/OIP.uyF4G8Kopu3KR-VP6QivJAHaHa?pid=Api&P=0&h=180"><div class="box-content"><h3 class="gap">Achievements</h3><p class="spacing">&#11088;<b>Projects –- </b>I work on academic and innovative engineering projects focused on product development and problem solving.<br>&#11088;<b>Achievements –- </b>Recognized for outstanding performance in technical and non-technical events both inside and outside college.</p></div></div>
+  </div>
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+  <h2>My Skills</h2>
+  <div class="skills-wrap">
+      <!-- decorative brain icon (keeps layout) -->
+      <img class="brain" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="brain" />
+
+      <div class="skills-grid" style="margin-top:18px;">
+        <center><div class="skill-box";class="spacing">Programming: HTML, CSS,Python, Java</div></center><br>
+       <center> <div class="skill-box";class="spacing">CAD: SolidWorks</div></center><br>
+        <center><div class="skill-box";class="spacing">3D Printing & Prototyping</div></center><br>
+        <center><div class="skill-box";class="spacing">CNC Basics & Machining</div></center><br>
+        <center><div class="skill-box";class="spacing">Technical skill :GD&T and tolerance understanding|Part design and drafting|Pneumatic circuit layout|BOM and PO preparation|Assembly and fitting|Quality control and inspection tools|Project Management|Critical Thinking</div></center><br>
+       <center><div class="skill-box";class="spacing">Non-Technical skill :Leadership & Teamwork|Time Management|Problem Solving</div></center><br>
+        <center><div class="skill-box";class="spacing">Software skill :SolidWorks | MS Excel (BOM/PO formatting)</div></center><br>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-section">
+    <div class="box"><img src="https://tse4.mm.bing.net/th/id/OIP.PBVBMDEDpPkAaF-jZT45EgHaE8?pid=Api&P=0&h=180"><div class="box-content"><h3 class="gap">Programming</h3><p class="spacing">&#11088;<b>HTML –- </b>Knowledge of building website structure and developing responsive webpages.<br>&#11088;<b>CSS –-</b> Experience in webpage layout design, styling, and interface customization.<br>&#11088;<b>Python –-</b> Programming knowledge for automation tasks, logic development, data handling, and scripting.<br>&#11088;<b>SolidWorks –-</b> Strong skills in part modeling, assemblies, drafting, sheet metal, and surface modeling with professional workflow understanding.</p></div></div>
+      <div class="box"></div>
+    <div class="box"><img src="https://tse2.mm.bing.net/th/id/OIP.2LnbfXWNgHkU8O_TpnIg8AHaHa?pid=Api&P=0&h=180"><div class="box-content"><h3 class="gap">Design  Knowledge</h3><p class="spacing">&#11088;<b>GD&T and Tolerancing –-</b> Knowledge of ASME standards to ensure precision and manufacturability of engineering components.<br>&#11088;<b>Machine Shop Knowledge –-</b> I am learning machining processes including CNC machines, manual machines, and 3D printer operation. This includes understanding cutting tools, machine setup, safety procedures, G-code basics, and part manufacturing workflow.<br>&#11088;<b>3D Printing –-</b> Understanding additive manufacturing principles, printing processes, slicing software, and machine operation.</p></div></div>
+      <div class="box"></div>
+    <div class="box"><img src="https://tse1.mm.bing.net/th/id/OIP.KKLfQuaygimH2MNmFHEkjwAAAA?pid=Api&P=0&h=180"><div class="box-content"><h3 class="gap">Technical skill</h3><p class="spacing">&#11088;<b>Technical Knowledge –- </b>Includes CAD design, engineering standards, manufacturing concepts, and product development workflows.<br>&#11088;<b>Design Thinking –-</b> Ability to apply structured creativity, user-focused logic, and engineering reasoning in solving design challenges.<br>&#11088;<b>CAD Modeling -–</b> Skilled in creating detailed part models, assemblies, sheet metal, surface design, drafting, and mass property evaluation using SolidWorks.<br>&#11088;<b>Analysis & Simulation –-</b> Basic understanding of stress analysis, motion simulation, and virtual testing for design validation.</p></div></div>
+      <div class="box"></div>
+    <div class="box"><img src="https://tse1.mm.bing.net/th/id/OIP.fBUn5ibSGALnZevgqcw0CgHaEK?pid=Api&P=0&h=1804"><div class="box-content"><h3 class="gap">Non-Technical skill </h3><p class="spacing">&#11088;<b>Soft Skills –-</b> Time management, adaptability, discipline, and strong work ethics.<br>&#11088;<b>Communication Skills –-</b> Ability to communicate ideas clearly, professionally, and technically in both verbal and written formats.<br>&#11088;<b>Problem-Solving Skills –-</b> Strong analytical ability to understand engineering problems and provide practical, effective solutions.</p></div></div>
+   <div class="box"></div>
+  <div class="box"><img src="https://tse4.mm.bing.net/th/id/OIP.d7og_VnGa2stcjp_p0noTAHaHa?pid=Api&P=0&h=180"><div class="box-content"><h3 class="gap">Qualities</h3><p class="spacing">&#11088;<b>Leadership Qualities –-</b> I demonstrate responsibility, initiative, and decision-making abilities. I can guide team members, coordinate tasks, and ensure goals are completed efficiently while maintaining a positive and collaborative environment.<br>&#11088;<b>Teamwork & Collaboration –-</b> Capable of working efficiently in teams, collaborating with cross-functional roles, and contributing towards shared goals.</p></div></div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <h2>📚 My Projects</h2>
+    <div class="rack-scroll" role="region" aria-label="Project racks">
+      <!-- Main Rack 1 -->
+      <div class="main-rack" aria-label="Main Rack 1">
+        <div class="rack-grid">
+          <div class="project-card" onclick="openProject('Project 01')"><img src="https://picsum.photos/600/400?1" alt="Project 01" /><div class="project-number">Project 01</div></div>
+          <div class="project-card" onclick="openProject('Project 02')"><img src="https://picsum.photos/600/400?2" alt="Project 02" /><div class="project-number">Project 02</div></div>
+          <div class="project-card" onclick="openProject('Project 03')"><img src="https://picsum.photos/600/400?3" alt="Project 03" /><div class="project-number">Project 03</div></div>
+          <div class="project-card" onclick="openProject('Project 04')"><img src="https://picsum.photos/600/400?4" alt="Project 04" /><div class="project-number">Project 04</div></div>
+          <div class="project-card" onclick="openProject('Project 05')"><img src="https://picsum.photos/600/400?5" alt="Project 05" /><div class="project-number">Project 05</div></div>
+          <div class="project-card" onclick="openProject('Project 06')"><img src="https://picsum.photos/600/400?6" alt="Project 06" /><div class="project-number">Project 06</div></div>
+          <div class="project-card" onclick="openProject('Project 07')"><img src="https://picsum.photos/600/400?7" alt="Project 07" /><div class="project-number">Project 07</div></div>
+          <div class="project-card" onclick="openProject('Project 08')"><img src="https://picsum.photos/600/400?8" alt="Project 08" /><div class="project-number">Project 08</div></div>
+          <div class="project-card" onclick="openProject('Project 09')"><img src="https://picsum.photos/600/400?9" alt="Project 09" /><div class="project-number">Project 09</div></div>
+          <div class="project-card" onclick="openProject('Project 10')"><img src="https://picsum.photos/600/400?10" alt="Project 10" /><div class="project-number">Project 10</div></div>
+          <div class="project-card" onclick="openProject('Project 11')"><img src="https://picsum.photos/600/400?11" alt="Project 11" /><div class="project-number">Project 11</div></div>
+          <div class="project-card" onclick="openProject('Project 12')"><img src="https://picsum.photos/600/400?12" alt="Project 12" /><div class="project-number">Project 12</div></div>
+        </div>
+      </div>
+      <!-- Main Rack 2 -->
+      <div class="main-rack" aria-label="Main Rack 2">
+        <div class="rack-grid">
+          <div class="project-card" onclick="openProject('Project 13')"><img src="https://picsum.photos/600/400?13" alt="Project 13" /><div class="project-number">Project 13</div></div>
+          <div class="project-card" onclick="openProject('Project 14')"><img src="https://picsum.photos/600/400?14" alt="Project 14" /><div class="project-number">Project 14</div></div>
+          <div class="project-card" onclick="openProject('Project 15')"><img src="https://picsum.photos/600/400?15" alt="Project 15" /><div class="project-number">Project 15</div></div>
+          <div class="project-card" onclick="openProject('Project 16')"><img src="https://picsum.photos/600/400?16" alt="Project 16" /><div class="project-number">Project 16</div></div>
+          <div class="project-card" onclick="openProject('Project 17')"><img src="https://picsum.photos/600/400?17" alt="Project 17" /><div class="project-number">Project 17</div></div>
+          <div class="project-card" onclick="openProject('Project 18')"><img src="https://picsum.photos/600/400?18" alt="Project 18" /><div class="project-number">Project 18</div></div>
+          <div class="project-card" onclick="openProject('Project 19')"><img src="https://picsum.photos/600/400?19" alt="Project 19" /><div class="project-number">Project 19</div></div>
+          <div class="project-card" onclick="openProject('Project 20')"><img src="https://picsum.photos/600/400?20" alt="Project 20" /><div class="project-number">Project 20</div></div>
+          <div class="project-card" onclick="openProject('Project 21')"><img src="https://picsum.photos/600/400?21" alt="Project 21" /><div class="project-number">Project 21</div></div>
+          <div class="project-card" onclick="openProject('Project 22')"><img src="https://picsum.photos/600/400?22" alt="Project 22" /><div class="project-number">Project 22</div></div>
+          <div class="project-card" onclick="openProject('Project 23')"><img src="https://picsum.photos/600/400?23" alt="Project 23" /><div class="project-number">Project 23</div></div>
+          <div class="project-card" onclick="openProject('Project 24')"><img src="https://picsum.photos/600/400?24" alt="Project 24" /><div class="project-number">Project 24</div></div>
+        </div>
+      </div>
+    </div>
+    <!-- Popup -->
+    <div id="popup">
+      <div style="background:#fff8e7; padding:20px; border-radius:12px; width:min(720px,94%); max-width:720px; color:#111;">
+        <h3 id="popupTitle"></h3>
+        <p id="popupBody"></p>
+        <div style="text-align:right; margin-top:12px;">
+          <button style="padding:8px 12px; background:var(--wood-frame); color:#fff; border:none; border-radius:8px; cursor:pointer;" onclick="closePopup()">Close</button>
+        </div>
+      </div>
+    </div>
+    <!-- TEA TABLE -->
+<div class="tea-table" id="teaTable">
+  <div class="tea-cup"></div>
+  <div class="icon-row">
+    <div class="object" onclick="event.stopPropagation(); openInfoPopup('Tea Table', 'This is a detailed description of the Tea Table project, including design, features, and materials used.')">🎩</div>
+    <!-- Education Icon -->
+    <div class="object" onclick="event.stopPropagation(); openInfoPopup('🎓 Education', 'B.E Mechanical Engineering<br>KGISL Institute of Technology, Coimbatore<br>CGPA: 7.90/10 (Up to 3rd Semester)<br><br><strong>Higher Secondary Certificate (HSC)</strong><br>Govt. Hr. Sec. School, S. Pungampalayam<br>Score: 65.33% (2022–23)')">🎓</div>
+    <!-- Folder Icon -->
+    <div class="object" onclick="event.stopPropagation(); openInfoPopup('📁 Folder - Documents', 'Certificates Available:<br>✔ HSC Marks Card<br>✔ B.E. Semester Results<br>✔ Project and Report Files')">📁</div>
+    <!-- Signature Icon -->
+    <div class="object" onclick="event.stopPropagation(); openInfoPopup('✒️ Signature', 'Signed by:<br><br><strong>Nithish Kumar</strong><br>Portfolio Holder & Engineering Student')">✒️</div>
+  </div>
+</div>
+    </div>
+  </section>
+
+
+  <!-- CERTIFICATES -->
+  <section id="certificate">
+    <div class="container">
+      <h2>Certificates</h2>
+      <div class="cert-grid">
+        <center><div class="project-card" onclick="openInfoPopup('Coursera', 'Details about Coursera')">Coursera</div></center><br>
+        <center><div class="project-card" onclick="openInfoPopup('SolidWorks', 'Details about SolidWorks')">SolidWorks</div></center><br>
+        <center><div class="project-card" onclick="openInfoPopup('3D Printing', 'Details about 3D Printing')">3D Printing</div></center><br>
+        <center><div class="project-card" onclick="openInfoPopup('FreeCodeCamp & Great Learning', 'Details about FreeCodeCamp & Great Learning')">FreeCodeCamp & Great Learning</div></center><br>
+      </div>
+    </div>
+    <div class="scroll-section">
+      <div class="box"><img src="https://tse4.mm.bing.net/th/id/OIP.gJtqNvPqEYBJHXU6AoEYVgHaHa?pid=Api&P=0&h=1801" /><div class="box-content"><h3 class="gap">Certificates</h3><p class="spacing">&#11088; Certified in SolidWorks, 3D printing, programming, and domain-relevant subjects.<br>01. Coursera (25+ Certificates) - Academic<br>02. Dassault Systèmes (SOLIDWORKS)<br>03. University of Illinois Urbana-Champaign (3D printing)<br>04. Internship Certificate - EL Mech Automachine Pvt. Ltd.,</p></div></div>
+      <div class="box"></div>
+      <div class="box"><img src="https://tse2.mm.bing.net/th/id/OIP.ZDEswxqO8vwn_QAANbur_wHaHa?pid=Api&P=0&h=180" /><div class="box-content"><h3 class="gap">Coursera</h3><p class="spacing">&#11088; Platform used for acquiring global-standard certifications.<br>01. University of Colorado Boulder<br>02. Georgia Institute of Technology<br>03. École Polytechnique Fédérale de Lausanne (EPFL)<br>04. Korea Advanced Institute of Science and Technology (KAIST)<br>05. Technical University of Denmark (DTU)<br>06. University of California, Irvine<br>07. Pontificia Universidad Católica de Chile<br>08. The Hong Kong University of Science and Technology<br>09. University of Michigan<br>10. University at Buffalo (SUNY)<br>11. IBM Skills Network<br>12. DeepLearning.AI<br>13. L&T EduTech<br>14. Unilever<br>15. University of Minnesota</p></div></div>
+      <div class="box"></div>
+      <div class="box"><img src="https://tse3.mm.bing.net/th/id/OIP.o9aeybTUcwdZG6SreTr3NAHaF6?pid=Api&P=0&h=180" /><div class="box-content"><h3 class="gap">FreeCodeCamp</h3><p class="spacing">&#11088; Platform for programming fundamentals and web dev.</p></div></div>
+      <div class="box"></div>
+      <div class="box"><img src="https://tse1.mm.bing.net/th/id/OIP.8g_URYRB7iXQxyyzEdmXWgHaE9?pid=Api&P=0&h=180" /><div class="box-content"><h3 class="gap">Great Learning</h3><p class="spacing">&#11088; Industry-focused certifications.</p></div></div>
+      <div class="box"></div>
+      <div class="box"><img src="https://tse1.mm.bing.net/th/id/OIP.j2CpnrDc7NgBc6mZCiZbSwHaGR?pid=Api&P=0&h=180" /><div class="box-content"><h3 class="gap">SolidWorks University</h3><p class="spacing">&#11088; Advanced SolidWorks tutorials & modules.</p></div></div>
+      <div class="box"></div>
+      <div class="box"><img src="https://tse4.mm.bing.net/th/id/OIP.491p3x2Xui9FKf0os17AJgHaF1?pid=Api&P=0&h=180" /><div class="box-content"><h3 class="gap">3D Printing University</h3><p class="spacing">&#11088; Advanced 3D Printing modules.</p></div></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <div class="contact-wrap">
+        <form class="contact-form" id="contact-form">
+          <label for="name">Name</label>
+          <input id="name" name="user_name" type="text" placeholder="Your name" required />
+          <label for="email">Email</label>
+          <input id="email" name="user_email" type="email" placeholder="you@example.com" required />
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+          <!-- Send buttons -->
+          <div style="display:flex; gap:12px; margin-top:12px;">
+            <button class="contact-btn" type="button" onclick="sendEmailJS()">Send (EmailJS)</button>
+            <button class="contact-btn" type="button" onclick="sendMailto()">Send (Mailto)</button>
+          </div>
+          <p id="status-message" style="margin-top:10px; font-weight:700; color:green;"></p>
+        </form>
+        <div class="social-links" aria-label="social links">
+          <p class="social-link"><i class="fa-solid fa-phone"></i> 9500870791</p>
+          <a href="mailto:nithiskumarguru40@gmail.com" class="social-link"><i class="fa-regular fa-envelope"></i> nithiskumargur40@gmail.com</a>
+          <a href="https://www.instagram.com/nithis2813?utm_source=qr&igsh=cXMybGsyeXo3bTlq" class="social-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+          <a href="https://wa.me/qr/P6WHLFHHMZM6E1" class="social-link"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+          <a href="https://facebook.com/profile.php?id=100055913281510" class="social-link"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-row">
+      <div class="footer-col">
+        <h4>Main</h4>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+      </div>
+      <div class="footer-col">
+        <h4>Projects</h4>
+        <a href="#projects">Wood Rack</a>
+        <a href="#projects">Tea Table</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="#contact">Mail</a>
+        <a href="#contact">Social Links</a>
+      </div>
+    </div>
+    <p>© 2025 Nithishkumar — All rights reserved.</p>
+  </footer>
+
+
+<!-- Chat icon -->
+<div id="chatIcon" title="Chat with us">
+  💬
+</div>
+
+<!-- Chat window -->
+<div id="chatWindow">
+  <div id="chatHeader">AI Chatbot</div>
+  <div id="chatContent">
+    <!-- Sample conversation content -->
+    <div style="margin-bottom:10px; padding:8px; background-color:#f1f1f1; border-radius:4px;">
+      <strong>Bot:</strong> Hello! I'm your AI assistant. How can I help you today?
+    </div>
+    <div style="margin-bottom:10px; padding:8px; background-color:#e0f7fa; border-radius:4px; align-self:flex-end;">
+      <strong>You:</strong> Can you tell me about your features?
+    </div>
+    <div style="margin-bottom:10px; padding:8px; background-color:#f1f1f1; border-radius:4px;">
+      <strong>Bot:</strong> Sure! I can answer questions, provide information, and help you with various tasks. Just ask!
+    </div>
+  </div>
+  <div id="chatInputArea">
+    <input type="text" id="userInput" placeholder="Type your question..." />
+    <button id="sendButton">Send</button>
+  </div>
+</div>
+ 
+</body>
+
+<script>
+  let aiClickCount = 0;
+document.addEventListener('DOMContentLoaded', () => {
+  // existing code...
+
+  // Toggle menu for mobile
+  const menuIcon = document.querySelector("#menu-icon");
+  const navList = document.querySelector("nav ul");
+  if(menuIcon && navList){
+    menuIcon.onclick = () => navList.classList.toggle("active");
+  }
+
+  // Fade-in boxes
+  const boxes = document.querySelectorAll('.box');
+  window.addEventListener('scroll', () => {
+    const trigger = window.innerHeight * 0.85;
+    boxes.forEach(box => {
+      const top = box.getBoundingClientRect().top;
+      if (top < trigger) box.classList.add('visible');
+    });
+  });
+
+  // Background switcher
+  const bgSwitcher = document.getElementById('bgSwitcher');
+  const backgrounds = [
+    "linear-gradient(-45deg, #f3e5ab, #fff8d2, #fddbbd, #fff1c1)",
+    "linear-gradient(-45deg, #89f7fe, #66a6ff, #4facfe, #00f2fe)",
+    "linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee)"
+  ];
+  let current = 0;
+  if(bgSwitcher){
+    bgSwitcher.addEventListener('click', () => {
+      current = (current + 1) % backgrounds.length;
+      document.body.style.background = backgrounds[current];
+      document.body.style.backgroundSize = "300% 300%";
+      document.body.style.animation = "gradientMove 10s ease infinite";
+    });
+  }
+
+  // Object to hold project details
+  const projectDetails = {
+    'Project 01': 'This is a detailed description of Project 01, including objectives, tools, and outcomes.',
+    'Project 02': 'Details about Project 02: design process, challenges faced, and solutions implemented.',
+    // Add other project details as needed
+    // ...
+  };
+
+  // Function to open project popup
+  window.openProject = function(projectName) {
+    const content = projectDetails[projectName] || 'Details not available.';
+    document.getElementById('popupTitle').innerText = projectName;
+    document.getElementById('popupBody').innerText = content;
+    document.getElementById('popup').style.display = 'flex';
+  };
+
+  // Function to open info popup (for Tea Table & Certificates)
+  window.openInfoPopup = (title, body) => {
+    document.getElementById('popupTitle').innerText = title;
+    document.getElementById('popupBody').innerHTML = body;
+    document.getElementById('popup').style.display = 'flex';
+  };
+
+  // Handle Tea Table icon click
+  const teaTable = document.querySelector('.tea-table');
+  if (teaTable) {
+    teaTable.onclick = () => {
+      openInfoPopup(
+        'Tea Table',
+        `<p>This is a detailed description of the Tea Table project, including design, features, and materials used.</p>`
+      );
+    };
+  }
+
+  // Handle Certificate boxes click
+  const certBoxes = document.querySelectorAll('.cert-grid .project-card');
+  certBoxes.forEach((box, index) => {
+    box.onclick = () => {
+      openInfoPopup(
+        'Certificate Detail ' + (index + 1),
+        `<p>This section provides details about Certificate ${index + 1}. You can customize this content as needed.</p>`
+      );
+    };
+  });
+
+  // closePopup function
+  window.closePopup = function() {
+    document.getElementById('popup').style.display='none';
+  };
+
+  // Toggle AI chat
+  const chatIcon = document.getElementById('chatIcon');
+  const chatWindow = document.getElementById('chatWindow');
+  const chatContent = document.getElementById('chatContent');
+  const userInput = document.getElementById('userInput');
+  const sendButton = document.getElementById('sendButton');
+
+  // Toggle chat window visibility
+  chatIcon.addEventListener('click', () => {
+    if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
+      chatWindow.style.display = 'flex';
+    } else {
+      chatWindow.style.display = 'none';
+    }
+  });
+
+  // Function to add message to chat
+  function addMessage(sender, message) {
+    const msgDiv = document.createElement('div');
+    msgDiv.style.marginBottom = '10px';
+    msgDiv.style.padding = '8px';
+    msgDiv.style.borderRadius = '4px';
+
+    if (sender === 'user') {
+      msgDiv.style.backgroundColor = '#e0f7fa';
+      msgDiv.style.alignSelf = 'flex-end';
+      msgDiv.innerHTML = `<strong>You:</strong> ${message}`;
+    } else {
+      msgDiv.style.backgroundColor = '#f1f1f1';
+      msgDiv.innerHTML = `<strong>Bot:</strong> ${message}`;
+    }
+
+    chatContent.appendChild(msgDiv);
+    chatContent.scrollTop = chatContent.scrollHeight;
+  }
+
+  // Handle send button click
+  sendButton.addEventListener('click', () => {
+    const question = userInput.value.trim();
+    if (question === '') return;
+    addMessage('user', question);
+    userInput.value = '';
+
+    // Simulate AI response (replace this with actual AI integration)
+    const answer = `You asked: "${question}". [This is a sample response.]`;
+    addMessage('bot', answer);
+  });
+
+  // Also handle pressing Enter to send
+  userInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      sendButton.click();
+    }
+  });
+
+  // Send email fallback
+  window.sendMailto = function() {
+    const name = encodeURIComponent(document.getElementById('name').value || '');
+    const mail = encodeURIComponent(document.getElementById('email').value || '');
+    const msg = encodeURIComponent(document.getElementById('message').value || '');
+    const to = 'nithiskumarguru40@gmail.com';
+    const subject = encodeURIComponent('Portfolio message from ' + (name || mail || 'Website visitor'));
+    const body = encodeURIComponent('Name: ' + (name || '') + '\nEmail: ' + (mail || '') + '\n\nMessage:\n' + (msg || ''));
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  };
+
+  // EmailJS (if configured)
+  const EMAILJS_USER_ID = '';
+  const EMAILJS_SERVICE_ID = '';
+  const EMAILJS_TEMPLATE_ID = '';
+
+  window.sendEmailJS = function() {
+    const status = document.getElementById('status-message');
+    if (!EMAILJS_USER_ID || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
+      status.style.color='orange'; 
+      status.innerText='EmailJS not configured — using mailto fallback.';
+      setTimeout(()=> sendMailto(), 700);
+      return;
+    }
+    if (!window.emailjs) {
+      const s = document.createElement('script'); 
+      s.src='https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js';
+      s.onload= () => { emailjs.init(EMAILJS_USER_ID); actuallySend(); };
+      document.body.appendChild(s);
+    } else {
+      emailjs.init(EMAILJS_USER_ID);
+      actuallySend();
+    }
+    function actuallySend() {
+      const templateParams = {
+        user_name: document.getElementById('name').value,
+        user_email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+      };
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+        .then(()=> { document.getElementById('status-message').style.color='green'; document.getElementById('status-message').innerText='✅ Message sent successfully.'; document.getElementById('contact-form').reset(); })
+        .catch(()=> { document.getElementById('status-message').style.color='red'; document.getElementById('status-message').innerText='❌ Send failed — fallback mailto used.'; setTimeout(()=> sendMailto(),700); });
+    }
+  };
+
+  // Set current year
+  document.getElementById('year').innerText=new Date().getFullYear();
+
+  // Keyboard shortcut H for Home
+  window.addEventListener('keydown', (e) => {
+    if(e.key.toLowerCase() === 'h') {
+      location.hash='#home';
+    }
+  });
+});
+</script>
+</body>
+</html>
+
+
