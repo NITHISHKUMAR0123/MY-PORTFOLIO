@@ -232,20 +232,89 @@ p {
 .contact-form input, .contact-form textarea { width:100%; padding:12px; margin-top:8px; border-radius:8px; border:1px solid rgba(0,0,0,0.08); }
 .contact-btn { margin-top:12px; padding:12px 16px; background:var(--accent); color:#fff; border:none; border-radius:10px; cursor:pointer; font-weight:700; }
 .social-links { width:260px; display:flex; flex-direction:column; gap:12px; align-items:flex-start; }
+
 /* FOOTER */
-footer {
-  background:var(--wood-frame);color:#fff; padding:16px 5px; text-align:center;
-}
-footer .footer-row {
-  display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin-bottom:12px;
-}
-footer .footer-col {
-  display:flex; flex-direction:column; align-items:center; gap:8px;
-}
-footer a {
-  color:#fff; text-decoration:none; transition:.3s;
-}
-footer a:hover { color:var(--accent); }
+  /* Footer Container */
+  .portfolio-footer {
+    background: #1f1f1f;
+    color: #ccc;
+    padding: 60px 20px 30px;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+  }
+
+  /* Footer Sections */
+  .footer-section {
+    flex: 1 1 220px;
+    min-width: 180px;
+  }
+
+  .footer-section h4 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer-section p, .footer-section a {
+    font-size: 14px;
+    color: #bbb;
+    text-decoration: none;
+    line-height: 1.6;
+    transition: color 0.3s;
+  }
+
+  .footer-section a:hover {
+    color: #00c2ff;
+  }
+
+  .footer-links, .footer-resources, .footer-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-socials {
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 8px;
+  }
+
+  .footer-socials a {
+    font-size: 20px;
+    color: #bbb;
+    transition: color 0.3s, transform 0.3s;
+  }
+
+  .footer-socials a:hover {
+    color: #00c2ff;
+    transform: translateY(-3px);
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 13px;
+    color: #777;
+  }
+
+  /* Responsive */
+  @media(max-width: 768px){
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .footer-section {align-items: center;}
+    .footer-socials {justify-content: center;}
+  }
 /* RESPONSIVE */
 @media(max-width:600px){
   .home-card, .about-card { flex-direction:column; text-align:center; }
@@ -574,27 +643,61 @@ footer a:hover { color:var(--accent); }
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-row">
-      <div class="footer-col">
-        <h4>Main</h4>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-      </div>
-      <div class="footer-col">
-        <h4>Projects</h4>
-        <a href="#projects">Wood Rack</a>
-        <a href="#projects">Tea Table</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="#contact">Mail</a>
-        <a href="#contact">Social Links</a>
+<!--footer-->
+
+<footer class="portfolio-footer">
+  <div class="footer-container">
+
+    <!-- About Me -->
+    <div class="footer-section">
+      <h4>About Me</h4>
+      <p>I am a Mechanical Engineering student passionate about 3D CAD design, automation, and robotics. Skilled in SolidWorks, AutoCAD, and creating innovative mechanical solutions.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <div class="footer-links">
+        <a href="#about">About Me</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <a href="resume.pdf" download>Download Resume</a>
       </div>
     </div>
-    <p>© 2025 Nithishkumar — All rights reserved.</p>
-  </footer>
+
+    <!-- Resources -->
+  
+<div class="footer-section">
+  <h4>Resources</h4>
+  <div class="footer-resources">
+    <a href="#projects">Project Library</a>
+    <a href="#cad-tutorials">CAD Tutorials</a>
+    <a href="#automation-guides">Automation Guides</a>
+    <a href="#robotics-resources">Robotics Resources</a>
+    <a href="#engineering-blogs">Engineering Blogs</a>
+    <a href="#design-patterns">Design Patterns</a>
+  </div>
+</div>
+
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h4>Connect with Me</h4>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/nithishkumar" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/nithishkumar" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.instagram.com/nithishkumar" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://twitter.com/nithishkumar" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    &copy; 2025 Nithish Kumar • Mechanical Design & Automation Portfolio • All rights reserved
+  </div>
+</footer>
 
 
 <!-- Chat icon -->
@@ -827,5 +930,3 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
-
-
